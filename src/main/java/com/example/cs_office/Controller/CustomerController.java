@@ -5,6 +5,7 @@ import com.example.cs_office.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,14 +41,18 @@ public class CustomerController {
         customerService.deleteCustomer(customerId);
     }
 
-    @PutMapping(path = "{userId}")
-    public void updateUser(
-            @PathVariable("userId") int userId,
-            @RequestParam(required = false) String fullname,
+    @PutMapping(path = "{customerId}")
+    public void updateCustomer(
+            @PathVariable("customerId") int customerId,
+            @RequestParam(required = false) String phoneNumber,
             @RequestParam(required = false) String email,
-            @RequestParam(required = false) String avatar,
-            @RequestParam(required = false) String password) {
-        customerService.updateCustomer(userId, fullname,email,avatar,password);
+            @RequestParam(required = false) String password,
+            @RequestParam(required = false) String fisrtName,
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) String address,
+            @RequestParam(required = false) Date createDate,
+            @RequestParam(required = false) boolean status
+    ) {
+        customerService.updateCustomer(customerId, phoneNumber, email, password, fisrtName, lastName, address, createDate, status);
     }
-
 }
