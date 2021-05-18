@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,19 +48,10 @@ public class CustomerService {
     }
 
     @Transactional
-    public void updateCustomer(int userId, String fullname, String email, String avatar, String password) {
-        Customer customer = customerRepository.findById(userId).orElseThrow(() -> new IllegalStateException("user with id" + userId + "does not exists"));
-
+    public void updateCustomer(int customerId, String fullname, String email, String password, String fisrtName, String lastName, String address, Date create_Date, boolean status) {
+        Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new IllegalStateException("user with id" + customerId + "does not exists"));
 //        if(fullname != null && fullname.length() > 0 && !Objects.equals(user.getFullname(),fullname)){
 //            customer.setFullname(fullname);
 //        }
-//        if(email != null && email.length() > 0 && !Objects.equals(user.getEmail(),email)){
-//            user.setEmail(email);
-//        }
-//        if(avatar != null && avatar.length() > 0 && !Objects.equals(user.getAvatar(),avatar)){
-//            user.setAvatar(avatar);
-//        }
-//        if(password != null && password.length() > 0 && !Objects.equals(user.getPassword(),password)){
-//            user.setPassword(password);
     }
 }
